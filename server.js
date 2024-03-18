@@ -7,6 +7,17 @@ const { userJoin, getCurrentUser, userLeave,
     getRoomUsers} = require('./utils/users');
 
 const app = express();
+app.use(cors(
+    {
+origin:["https://deploy-mern-1whq.vercel.app"],
+methods:["POST", "GET"],
+credentials: true
+    }
+));
+app.use(express.json())
+
+
+
 const server = http.createServer(app);
 const io = socketio(server);
 
